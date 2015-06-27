@@ -13,7 +13,7 @@ with (
 );
 
 has src  => (is => 'rw', required => 1);
-has dest => (is => 'rw', required => );
+has dest => (is => 'rw', required => 1);
 
 use namespace::autoclean;
 
@@ -25,11 +25,14 @@ sub gather_files {
     $self->log_fatal("Please specify src")  unless $self->src;
     $self->log_fatal("Please specify dest") unless $self->dest;
 
-    open my($fh), "<", $self->src or
-        $self->log_fatal(["Can't open src file at '%s'", $self->src]);
-
     my $file = Dist::Zilla::File::InMemory->new(
-        name => $self->dest, content => ~~<$fh>);
+        name => $self->dest,
+        content => do {
+            local $/;
+            open my($fh), "<", $self->src or
+                $self->log_fatal(["Can't open src file at '%s'", $self->src]);
+            ~~<$fh>;
+        });
 
     $self->log(["Adding file from %s to %s", $self->src, $self->dest]);
     $self->add_file($file);
