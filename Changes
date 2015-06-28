@@ -1,5 +1,12 @@
 Revision history for Dist-Zilla-Plugin-AddFile-FromFS
 
+0.02    2015-06-28 (PERLANCAR)
+
+	- No functional changes.
+
+	- [doc] Mention DZP:AddFile::From{Code,Command}.
+
+
 0.01     2015-06-28 (PERLANCAR)
 
          - First release.
