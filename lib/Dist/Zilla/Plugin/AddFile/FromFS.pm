@@ -67,3 +67,7 @@ This plugin simply adds a file from local filesystem to your build.
 =head1 SEE ALSO
 
 L<Dist::Zilla::Plugin::GenerateFile>
+
+L<Dist::Zilla::Plugin::AddFile::FromCode>
+
+L<Dist::Zilla::Plugin::AddFile::FromCommand>
