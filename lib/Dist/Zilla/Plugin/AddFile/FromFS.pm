@@ -9,7 +9,7 @@ use warnings;
 
 use Moose;
 with (
-        'Dist::Zilla::Role::FileGatherer',
+    'Dist::Zilla::Role::FileGatherer',
 );
 
 has src  => (is => 'rw', required => 1);
@@ -18,24 +18,24 @@ has dest => (is => 'rw', required => 1);
 use namespace::autoclean;
 
 sub gather_files {
-    require Dist::Zilla::File::InMemory;
+    require Dist::Zilla::File::OnDisk;
 
     my ($self, $arg) = @_;
 
     $self->log_fatal("Please specify src")  unless $self->src;
     $self->log_fatal("Please specify dest") unless $self->dest;
 
-    my $file = Dist::Zilla::File::InMemory->new(
-        name => $self->dest,
-        content => do {
-            local $/;
-            open my($fh), "<", $self->src or
-                $self->log_fatal(["Can't open src file at '%s'", $self->src]);
-            ~~<$fh>;
-        });
+    my @stat = stat $self->src
+        or $self->log_fatal(["%s does not exist", $self->src]);
+
+    my $fileobj = Dist::Zilla::File::OnDisk->new({
+        name => $self->src,
+        mode => $stat[2] & 0755, # kill world-writability
+    });
+    $fileobj->name($self->dest);
 
     $self->log(["Adding file from %s to %s", $self->src, $self->dest]);
-    $self->add_file($file);
+    $self->add_file($fileobj);
 }
 
 __PACKAGE__->meta->make_immutable;
