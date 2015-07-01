@@ -54,12 +54,17 @@ In F<dist.ini>:
 
 To add more files:
 
- [AddFile::FromFS / 2]
+ [AddFile::FromFS / OtherTips]
  src=/home/ujang/doc/othertips.txt
  dest=share/othertips.txt
 
 
 =head1 DESCRIPTION
+
+Note: this module is still just a quick hack, it currently does not do encoding
+or other fancy stuffs. You might want to try L<Dist::Zilla::Plugin::GatherDir>
+instead. I keep this module on CPAN because GatherDir currently does not provide
+a convenient way to add single files.
 
 This plugin simply adds a file from local filesystem to your build.
 
