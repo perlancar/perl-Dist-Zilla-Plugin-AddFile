@@ -61,17 +61,15 @@ To add more files:
 
 =head1 DESCRIPTION
 
-Note: this module is still just a quick hack, it currently does not do encoding
-or other fancy stuffs. You might want to try L<Dist::Zilla::Plugin::GatherDir>
-instead. I keep this module on CPAN because GatherDir currently does not provide
-a convenient way to add single files.
-
-This plugin simply adds a file from local filesystem to your build.
+This plugin lets you add single file(s) from local filesystem to your build.
 
 
 =head1 SEE ALSO
 
-L<Dist::Zilla::Plugin::GatherDir>
+L<Dist::Zilla::Plugin::GatherDir> is the standard way to add files to your
+build, but this plugin currently does not offer a way to include single files.
+Wishlist ticket already created:
+L<https://rt.cpan.org/Ticket/Display.html?id=105583>
 
 L<Dist::Zilla::Plugin::GenerateFile>
 
