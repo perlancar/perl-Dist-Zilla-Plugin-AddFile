@@ -1,22 +1,22 @@
-0.04    2015-07-01 (PERLANCAR)
+0.04    2015-07-01  Released-By: PERLANCAR
 
         - [Bugfix] Replace DZF:InMemory with DZF:OnDisk to avoid encoding issue.
 
 
-0.03    2015-06-30 (PERLANCAR)
+0.03    2015-06-30  Released-By: PERLANCAR
 
 	- No functional changes.
 
 	- Mention GatherDir plugin [RT#105555].
 
 
-0.02    2015-06-28 (PERLANCAR)
+0.02    2015-06-28  Released-By: PERLANCAR
 
 	- No functional changes.
 
 	- [doc] Mention DZP:AddFile::From{Code,Command}.
 
 
-0.01     2015-06-28 (PERLANCAR)
+0.01     2015-06-28  Released-By: PERLANCAR
 
          - First release.
